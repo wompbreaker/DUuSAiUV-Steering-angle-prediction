@@ -352,7 +352,9 @@ All parameters are set in `config.py`. Key ones to tune:
 
 Once inference completes, annotated frames with steering wheel overlays, predicted angles, ground truth labels, and lane-change warnings are saved to `outputs/frames/`. When the `--video` flag is used, these frames are stitched together into an MP4 video:
 
-![Prediction Video](assets/prediction.mp4)
+
+https://github.com/user-attachments/assets/036c3027-a9fd-4cb7-b526-924f9ddb51c4
+
 
 The video shows the model's real-time predictions in action, with:
 - **Green steering wheel** — small steering angles (stable driving)
@@ -363,5 +365,5 @@ The video shows the model's real-time predictions in action, with:
 Generate the video with:
 
 ```bash
-python predict.py --video --max-frames 500
+python predict.py --video --max-frames 800
 ```
