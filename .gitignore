@@ -1,0 +1,8 @@
+# Python stuff
+__pycache__/
+venv/
+*.ruff_cache/
+
+archive.zip
+outputs/
+saved_model/
