@@ -6,32 +6,34 @@ A CNN + LSTM deep learning pipeline that predicts steering angles from sequences
 
 ## Table of Contents
 
-- [1. Project Overview](#1-project-overview)
-- [2. Project Structure](#2-project-structure)
-- [3. Setup](#3-setup)
-  - [3.1 Prerequisites](#31-prerequisites)
-  - [3.2 Automated Setup](#32-automated-setup)
-  - [3.3 Manual Setup](#33-manual-setup)
-  - [3.4 Dataset](#34-dataset)
-- [4. Pipeline](#4-pipeline)
-  - [4.1 Data Loading and Preprocessing](#41-data-loading-and-preprocessing)
-  - [4.2 Sequence Construction](#42-sequence-construction)
-  - [4.3 Model Architecture](#43-model-architecture)
-  - [4.4 Training](#44-training)
-  - [4.5 Inference and Visualization](#45-inference-and-visualization)
-  - [4.6 Lane-Change Detection](#46-lane-change-detection)
-- [5. Module Reference](#5-module-reference)
-  - [5.1 config.py](#51-configpy)
-  - [5.2 data_loader.py](#52-data_loaderpy)
-  - [5.3 model.py](#53-modelpy)
-  - [5.4 train.py](#54-trainpy)
-  - [5.5 predict.py](#55-predictpy)
-  - [5.6 lane_change.py](#56-lane_changepy)
-  - [5.7 utils.py](#57-utilspy)
-- [6. Usage](#6-usage)
-  - [6.1 Training](#61-training)
-  - [6.2 Inference](#62-inference)
-- [7. Configuration Reference](#7-configuration-reference)
+- [Predicting Steering Angle in a Self Driving Car](#predicting-steering-angle-in-a-self-driving-car)
+  - [Table of Contents](#table-of-contents)
+  - [1. Project Overview](#1-project-overview)
+  - [2. Project Structure](#2-project-structure)
+  - [3. Setup](#3-setup)
+    - [3.1 Prerequisites](#31-prerequisites)
+    - [3.2 Automated Setup](#32-automated-setup)
+    - [3.3 Manual Setup](#33-manual-setup)
+    - [3.4 Dataset](#34-dataset)
+  - [4. Pipeline](#4-pipeline)
+    - [4.1 Data Loading and Preprocessing](#41-data-loading-and-preprocessing)
+    - [4.2 Sequence Construction](#42-sequence-construction)
+    - [4.3 Model Architecture](#43-model-architecture)
+    - [4.4 Training](#44-training)
+    - [4.5 Inference and Visualization](#45-inference-and-visualization)
+    - [4.6 Lane-Change Detection](#46-lane-change-detection)
+  - [5. Module Reference](#5-module-reference)
+    - [5.1 config.py](#51-configpy)
+    - [5.2 data\_loader.py](#52-data_loaderpy)
+    - [5.3 model.py](#53-modelpy)
+    - [5.4 train.py](#54-trainpy)
+    - [5.5 predict.py](#55-predictpy)
+    - [5.6 lane\_change.py](#56-lane_changepy)
+    - [5.7 utils.py](#57-utilspy)
+  - [6. Usage](#6-usage)
+    - [6.1 Training](#61-training)
+    - [6.2 Inference](#62-inference)
+  - [7. Configuration Reference](#7-configuration-reference)
 
 ---
 
@@ -53,21 +55,28 @@ Key features:
 
 ```
 project/
-├── config.py          # All hyperparameters, paths, and constants
-├── data_loader.py     # CSV parsing, image preprocessing, caching, Keras generator
-├── model.py           # CNN + LSTM model definition (Keras Functional API)
-├── train.py           # Training loop with callbacks and loss plotting
-├── predict.py         # Inference script with overlays and video output
-├── lane_change.py     # Lane-change detection from steering angle sequences
-├── utils.py           # Visualization helpers (steering wheel, warnings, video writer)
-├── requirements.txt   # Python dependencies
-├── setup.ps1          # Windows setup script (PowerShell)
-├── setup.sh           # Linux/macOS setup script (Bash)
-├── .gitignore
-├── saved_model/       # Trained model checkpoints (generated)
+├── outputs/                          # Training curves and annotated frames (generated)
+├── saved_model/                      # Trained model checkpoints (generated)
 │   ├── best_model.keras
 │   └── final_model.keras
-└── outputs/           # Training curves and annotated frames (generated)
+├── self_driving_car_dataset_jungle/  # First dataset (images + CSV)
+│   ├── IMG/
+│   └── driving_log.csv
+├── self_driving_car_dataset_make/    # Second dataset (images + CSV)
+│   ├── IMG/
+│   └── driving_log.csv
+├── .gitignore
+├── config.py                         # All hyperparameters, paths, and constants
+├── data_loader.py                    # CSV parsing, image preprocessing, caching, Keras generator
+├── lane_change.py                    # Lane-change detection from steering angle sequences
+├── model.py                          # CNN + LSTM model definition (Keras Functional API)
+├── predict.py                        # Inference script with overlays and video output
+├── train.py                          # Training loop with callbacks and loss plotting
+├── utils.py                          # Visualization helpers (steering wheel, warnings, video writer)
+├── requirements.txt                  # Python dependencies
+├── setup.ps1                         # Windows setup script (PowerShell)
+├── setup.sh                          # Linux/macOS setup script (Bash)
+└── README.md
 ```
 
 ---
