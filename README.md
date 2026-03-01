@@ -34,6 +34,7 @@ A CNN + LSTM deep learning pipeline that predicts steering angles from sequences
     - [6.1 Training](#61-training)
     - [6.2 Inference](#62-inference)
   - [7. Configuration Reference](#7-configuration-reference)
+  - [8. Output video](#8-output-video)
 
 ---
 
@@ -55,6 +56,7 @@ Key features:
 
 ```
 project/
+├── assets/                           # Static assets for README and video output
 ├── outputs/                          # Training curves and annotated frames (generated)
 ├── saved_model/                      # Trained model checkpoints (generated)
 │   ├── best_model.keras
@@ -197,6 +199,10 @@ Training is managed by `train.py` with the following setup:
 
 After training, loss and MAE curves are saved to `outputs/training_curves.png`.
 
+![Training Curves](assets/training_curves.png)
+
+*The training curves show loss (MSE) and Mean Absolute Error (MAE) for both training and validation sets across epochs, allowing you to monitor convergence and detect overfitting.*
+
 ### 4.5 Inference and Visualization
 
 `predict.py` loads a trained model and runs it frame-by-frame on the dataset:
@@ -337,3 +343,23 @@ All parameters are set in `config.py`. Key ones to tune:
 | `CROP_TOP` / `CROP_BOTTOM` | `60` / `25` | Pixels cropped from top (sky) and bottom (hood) |
 | `LANE_CHANGE_ANGLE_THRESHOLD` | `0.15` | Min |angle| for zero-crossing detection |
 | `LANE_CHANGE_DERIVATIVE_THRESHOLD` | `0.04` | Min |d(angle)/dt| for sustained-derivative detection |
+
+---
+
+## 8. Output video
+
+Once inference completes, annotated frames with steering wheel overlays, predicted angles, ground truth labels, and lane-change warnings are saved to `outputs/frames/`. When the `--video` flag is used, these frames are stitched together into an MP4 video:
+
+![Prediction Video](assets/prediction.mp4)
+
+The video shows the model's real-time predictions in action, with:
+- **Green steering wheel** — small steering angles (stable driving)
+- **Yellow steering wheel** — moderate angles
+- **Red steering wheel + border** — large angles or detected lane changes
+- **Angle readout** — predicted vs. ground truth steering angles in degrees
+
+Generate the video with:
+
+```bash
+python predict.py --video --max-frames 500
+```
