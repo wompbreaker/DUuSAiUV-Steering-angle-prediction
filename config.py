@@ -39,11 +39,11 @@ IMG_CHANNELS = 3
 STEERING_OFFSET = 0.2
 
 # Number of consecutive frames forming one input sequence for the LSTM
-SEQ_LEN = 5
+SEQ_LEN = 7
 
 # Stride for building sequences (1 = max overlap, SEQ_LEN = no overlap).
 # Higher stride = fewer sequences = faster epoch, less redundancy.
-SEQ_STRIDE = 3
+SEQ_STRIDE = 4
 
 # Fraction of data used for validation
 VAL_SPLIT = 0.2
@@ -65,7 +65,7 @@ LEARNING_RATE = 1e-3
 ES_PATIENCE = 7
 # ReduceLROnPlateau
 LR_FACTOR = 0.5
-LR_PATIENCE = 3
+LR_PATIENCE = 4
 
 # ----------------------------- #
 # --- Lane-change detection --- #
@@ -93,3 +93,4 @@ VIS_MODERATE_THRESH = 0.4   # |angle| < this  -> yellow, else red
 # --- Video Generation --- #
 # ------------------------ #
 FPS = 25.0
+
